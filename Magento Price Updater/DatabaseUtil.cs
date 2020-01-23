@@ -65,11 +65,30 @@ namespace Magento_Price_Updater
         {
             try
             { 
-                var db = getNewConnection(); //opens new database connection
+                
 
                 if (seed != null) //if seed.sql is provided then it is executed when the database is created, if not then the database is created empty
                 {
-                    var create = File.ReadAllText(seed); //reads seed.sql file to start database
+                    //TODO remove hardcode location
+                    var dbFile = "C:\\Users\\Danny\\source\\repos\\Magento Price Updater\\Magento Price Updater\\databases\\database.db";
+
+                    var connectionString = $"Data Source={dbFile}";
+                    var seedLoc = "C:\\Users\\Danny\\source\\repos\\Magento Price Updater\\Magento Price Updater\\databases\\seed.sql";
+                    var create = File.ReadAllText(seedLoc); //reads lines from the seed.sql file
+
+                    var db = new SQLiteConnection(connectionString);
+
+                    db.Execute(create);
+                }
+                else
+                {
+                    //TODO remove hardcode location
+                    var dbFile = "database.db";
+                    var connectionString = $"Data Source={dbFile}";
+                    var create = "CREATE TABLE IF NOT EXISTS magentoImport; CREATE TABLE IF NOT EXISTS unleashedImport;";
+
+                    var db = new SQLiteConnection(connectionString);
+
                     db.Execute(create);
                 }
             }

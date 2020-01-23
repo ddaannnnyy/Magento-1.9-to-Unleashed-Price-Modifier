@@ -49,8 +49,8 @@ namespace Magento_Price_Updater
             if (Directory.Exists(filePath)) //checks for active directory.
             {
                 try
-                {
-                    using (StreamWriter sr = new StreamWriter(filePath + fileName)) //open a new stream writer with path and filename provided
+                { 
+                    using (StreamWriter sr = new StreamWriter(filePath + fileName,true)) //open a new stream writer with path and filename provided. true param means that the writer will append instead of replace the file
                     {
                         sr.WriteLine(data); 
                     }
@@ -74,7 +74,7 @@ namespace Magento_Price_Updater
             {
                 //creates line with time of error and error message
                 string errorText = DateTime.Today.ToShortDateString() + " - " + DateTime.Today.ToShortTimeString() + "\tError Occurred: " + error;
-                printToFile(errorText, "errorlog.txt", fileName);
+                printToFile(errorText, "C:\\Users\\Danny\\source\\repos\\Magento Price Updater\\Magento Price Updater\\databases\\", "errorlog.txt");
             }
             catch (Exception ex)
             {

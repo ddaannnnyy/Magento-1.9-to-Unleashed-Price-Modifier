@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Magento_Price_Updater
 {
@@ -22,8 +23,9 @@ namespace Magento_Price_Updater
         {
             try
             {
-                string seed = "C:\\Users\\Danny\\source\\repos\\Magento Price Updater\\Magento Price Updater\\databases\\seed.sql"; //TODO remove this hardcode
-                DatabaseUtil.setupDatabase(seed);
+                string seed = @"C:\\Users\\Danny\\source\\repos\\Magento Price Updater\\Magento Price Updater\\databases\\seed.sql"; //TODO remove this hardcode
+                string pathseed = Path.GetFullPath(seed); //sanitises the string to a valid path
+                DatabaseUtil.setupDatabase(pathseed);
             }
             catch (Exception ex)
             {

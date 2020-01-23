@@ -1,0 +1,6 @@
+23/01/2020 - 12:00 AM	Error Occurred: SQL logic error
+near ";": syntax error
+23/01/2020 - 12:00 AM	Error Occurred: SQL logic error
+near ";": syntax error
+23/01/2020 - 12:00 AM	Error Occurred: SQL logic error
+near ";": syntax error
